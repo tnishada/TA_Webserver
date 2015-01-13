@@ -10,26 +10,23 @@ app.get('/', function (req, res) {
 
 // request for all the tweets 
 app.get('/all', function (req, res) {
-	con.getConnection().find({}, function(err, data) 
-	{	
-		if(err != null)
-		{
-			console.log("error occurred while retrieving data from the database");
-		}
+	con.getAll(function(err, data) {
 		res.json(data);
-	})
+	});	
 })
 
 //request to get the most recent 10 positive tweets
-app.get('/mostpositive', function(req , res) {
-	var query = con.getConnection().find({});
-	query.sort({'_id':-1});
-	query.where("sentiment_json.compound").gt(0);
-	query.limit(10);
-	query.exec(function(err, data){
+app.get('/mostrecentpositive', function(req , res) {
+	con.getMostRecentPositive(function(err, data){
 		res.json(data);
-	})
+	});	
 })
+
+app.get('/mostrecentnegative', function(req , res){
+	con.getMostRecentNegative(function(err , data){
+		res.json(data);
+	});
+});
 
 var server = app.listen(3000, function () {
 

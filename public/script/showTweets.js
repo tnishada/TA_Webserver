@@ -33,7 +33,31 @@ function readAll()
 
 function getPositiveTenTweets()
 {
-	var obj = httpGet("http://localhost:3000/mostpositive");
+	var obj = httpGet("http://localhost:3000/mostrecentpositive");
+	  var content = "";
+	
+	content += "<table> <tr><th>Tweets</th><th>+ Sentiment</th></tr>";
+    for(var i =0 ; i < obj.length ; i++)
+    {
+		content += "<tr><td>";
+        content = content + obj[i]["tweet_json"]["text"];
+		
+		content+= "</td><td>";
+		content+= obj[i]['sentiment_json']['compound'];	
+		
+		
+		content += "</td></tr>";
+    }
+	
+	content += "</table>";
+	
+    document.getElementById("viewer").innerHTML = content;
+}
+
+
+function getNegativeTenTweets()
+{
+	var obj = httpGet("http://localhost:3000/mostrecentnegative");
 	  var content = "";
 	
 	content += "<table> <tr><th>Tweets</th><th>+ Sentiment</th></tr>";
