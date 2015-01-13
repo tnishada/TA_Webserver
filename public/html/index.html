@@ -1,7 +1,9 @@
 <html>
 	<head>
 		<title>Tweeter Analyser</title>
-		<script type="text/javascript" src="./../script/showTweets.js"></script>
+
+		<script src="http://d3js.org/d3.v3.min.js"></script>
+		
 		<link rel="stylesheet" type="text/css" href="./../css/style.css"/>
 	</head>
 	<body>
@@ -9,6 +11,9 @@
 		<input type="button" value="Read Most Recent Ten Positive Tweets" onclick="getPositiveTenTweets()" />
 		<input type="button" value="Read Most Recent Ten Negative Tweets" onclick="getNegativeTenTweets()" />
 		<div id="viewer"></div>
+		<div class="chart"></div>		
+		<script type="text/javascript" src="./../script/graph.js"></script>
+		<script type="text/javascript" src="./../script/showTweets.js"></script>
 	</body>
 </html>
 

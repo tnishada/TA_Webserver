@@ -23,7 +23,10 @@ var getConnection = function(){
 
 var getAll = function(cb){
 	
-	tweet.find({}, function(err, data) {	
+	var query = tweet.find({});
+	query.sort({'_id':-1});
+
+	query.exec( function(err, data) {
 		if(err != null)
 		{
 			console.log("error occurred while retrieving data from the database");

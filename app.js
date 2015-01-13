@@ -17,12 +17,14 @@ app.get('/all', function (req, res) {
 
 //request to get the most recent 10 positive tweets
 app.get('/mostrecentpositive', function(req , res) {
+	console.log("request for positive tweets received");
 	con.getMostRecentPositive(function(err, data){
 		res.json(data);
 	});	
 })
 
 app.get('/mostrecentnegative', function(req , res){
+	console.log("request for negative tweets received");
 	con.getMostRecentNegative(function(err , data){
 		res.json(data);
 	});
