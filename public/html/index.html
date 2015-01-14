@@ -1,17 +1,24 @@
 <html>
 	<head>
 		<title>Tweeter Analyser</title>
-
-		<script src="http://d3js.org/d3.v3.min.js"></script>
 		
 		<link rel="stylesheet" type="text/css" href="./../css/style.css"/>
 	</head>
 	<body>
-		<input type="button" value="Read All Tweets" onclick="readAll()" />
-		<input type="button" value="Read Most Recent Ten Positive Tweets" onclick="getPositiveTenTweets()" />
-		<input type="button" value="Read Most Recent Ten Negative Tweets" onclick="getNegativeTenTweets()" />
-		<div id="viewer"></div>
-		<div class="chart"></div>		
+		<div>
+			<input type="button" value="Show Overall Sentiment" onclick="readAll()" />
+			<input type="button" value="Show Sentiment Of Most Recent Ten Positive Tweets" onclick="getPositiveTenTweets()" />
+			<input type="button" value="Show Sentiment Of Most Recent Ten Negative Tweets" onclick="getNegativeTenTweets()" />
+		</div>
+		<div>
+			<input type="button" value ="Show Sentiment" onclick="getTimeFilteredTweets()"/>
+			From <input type="date" id="fromDate" /> <input type="time" id="fromTime"/>
+			To <input type="date" id="toDate"/> <input type="time" id="toTime"/>
+		</div>
+		<div class="chart"></div>
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="http://d3js.org/d3.v3.min.js"></script>
 		<script type="text/javascript" src="./../script/graph.js"></script>
 		<script type="text/javascript" src="./../script/showTweets.js"></script>
 	</body>

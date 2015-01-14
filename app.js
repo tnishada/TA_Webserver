@@ -30,6 +30,15 @@ app.get('/mostrecentnegative', function(req , res){
 	});
 });
 
+app.get('/timefilteredtweets',function(req, res){
+
+	con.getTimeFilteredTweets(req['query']['from'],req['query']['to'] , function(err , data){
+		//console.log(data);
+		res.json(data);
+	});
+});
+
+
 var server = app.listen(3000, function () {
 
   var host = server.address().address

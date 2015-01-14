@@ -3,12 +3,10 @@ table, th, td{
 }
 body{
 	background-color: #FFFF99; 
-	font: 10px sans-serif;
-	
+	/*font: 10px sans-serif;*/
 }
 
-.axis path,
-.axis line {
+.axis path, .axis line {
   fill: none;
   stroke: #000;
   shape-rendering: crispEdges;
@@ -22,4 +20,8 @@ body{
   fill: none;
   stroke: steelblue;
   stroke-width: 1.5px;
+}
+
+div{
+  padding: 5px;
 }

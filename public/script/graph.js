@@ -20,6 +20,7 @@ var yAxis = d3.svg.axis()
     .orient("left");
 
 var line = d3.svg.line()
+    .interpolate("basis")
     .x(function(d) { return x(d.date); })
     .y(function(d) { return y(d.close); });
 
@@ -42,9 +43,9 @@ var drawer =  function(error, data) {
          y.domain(d3.extent(data, function(d) { return d.close; }));
 
           svg.append("g")
-            .attr("class", "x axis")
-            .attr("transform", "translate(0," + height + ")")
-             .call(xAxis);
+              .attr("class", "x axis")
+              .attr("transform", "translate(0," + height + ")")
+              .call(xAxis);
 
          svg.append("g")
             .attr("class", "y axis")
