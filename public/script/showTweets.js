@@ -54,7 +54,6 @@ function getPositiveTenTweets()
 		
 		content += "</td></tr>";
 
-
     }
 	
 	content += "</table>";
@@ -84,7 +83,6 @@ function getNegativeTenTweets()
 		
 		content += "</td></tr>";
 
-
     }
 	
 	content += "</table>";
@@ -92,13 +90,9 @@ function getNegativeTenTweets()
     document.getElementById("viewer").innerHTML = content;
 	drawGraph(obj);
 }
-/*
-data = [ {'date':'Fri Jan 09 04:56:46 +0000 2015' , 'close':'582.13'},
-	{'date':'Fri Jan 09 08:56:46 +0000 2015', 'close':'700.98'},
-	{'date':'Fri Jan 09 09:56:46 +0000 2015','close':'603.00'}];
-*/
 
 var drawGraph = function(jsonObj) {
+
 	var data = [];
 	for(var i =0 ; i < jsonObj.length ; i++)
 	{
@@ -107,5 +101,5 @@ var drawGraph = function(jsonObj) {
 		data[i] = obj;
 	}
 	drawer(null,data);
-
 };
+
