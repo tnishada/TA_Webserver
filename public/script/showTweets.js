@@ -22,23 +22,20 @@ var getNegativeTenTweets = function(){
 };
 
 var getTimeFilteredTweets = function(){
+
 	var toDate = document.getElementById('toDate').value;
-	var toTime = document.getElementById('toTime').value;
 	var fromDate = document.getElementById('fromDate').value;
-	var fromTime = document.getElementById('fromTime').value;
 
-
-	if(toDate == "" || toTime == "" || fromDate == "" || fromTime == ""){
+	if(toDate == "" || fromDate == "" ){
 		alert("please fill all fields to continue");
 	}
 	else{
-		var fromTimestamp = getStandardTime(fromDate,fromTime);
-		var toTimestamp = getStandardTime(toDate,toTime);
+		var fromTimestamp = getStandardTime(fromDate);
+		var toTimestamp = getStandardTime(toDate);
 
 		var obj = httpGet("http://localhost:3000/timefilteredtweets","from="+fromTimestamp+"&to="+toTimestamp);
 		drawGraph(obj);
 	}
-
 };
 
 var drawGraph = function(jsonObj){
@@ -50,18 +47,12 @@ var drawGraph = function(jsonObj){
 	drawer(null,data);
 };
 
-var getStandardTime = function(date , time){
+var getStandardTime = function(dateString ){
+	var dateObj = new Date(dateString);
+	return objectIdFromDate(dateObj);
+};
 
-	var days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-	var months = ['Jan','Feb','Mar','May','June','July','Aug','Sept','Oct','Nov','Dec'];
-
-	var date = new Date(date);
-
-	var sDay = days[date.getDay()];
-	var sMonth = months[date.getMonth()];
-	var sYear = date.getFullYear();
-
-	var standardTime = sDay+" "+sMonth+" "+date.getDate()+" "+time+":00 %2B0000 "+sYear;
-	return standardTime;
+var objectIdFromDate = function (date) {
+	return Math.floor(date.getTime() / 1000).toString(16) + "0000000000000000";
 };
 

@@ -25,6 +25,7 @@ var getAll = function(cb){
 	
 	var query = tweet.find({});
 	query.sort({'tweet_json.created_at':1});
+	query.select('tweet_json.created_at sentiment_json.compound -_id');
 
 	query.exec( function(err, data) {
 		if(err != null)
@@ -45,6 +46,7 @@ var getMostRecentPositive = function(cb){
 	query.sort({'tweet_json.created_at':-1});
 	query.where("sentiment_json.compound").gt(0);
 	query.limit(10);
+	query.select('tweet_json.created_at sentiment_json.compound -_id');
 	
 	query.exec(function(err, data){
 		cb(err, data);
@@ -56,29 +58,29 @@ var getMostRecentNegative = function(cb){
 	query.sort({'tweet_json.created_at':-1});
 	query.where("sentiment_json.compound").lt(0);
 	query.limit(10);
-	
+	query.select('tweet_json.created_at sentiment_json.compound -_id');
+
 	query.exec(function(err, data){
 		cb(err, data);
 	})
 };
 
 var getTimeFilteredTweets = function(paramFrom , paramTo , cb){
+
 	var query = tweet.find({});
 	query.sort({'tweet_json.created_at':1});
-	query.where("tweet_json.created_at").gt(paramFrom);
-	query.where("tweet_json.created_at").lt(paramTo);
+	query.where("_id").gt(paramFrom);
+	query.where("_id").lt(paramTo);
+	query.select('tweet_json.created_at sentiment_json.compound -_id');
 
 	query.exec(function(err, data){
 
-		for(var x=0;x<data.length;x++)
-		{
-			console.log(data[x]['tweet_json']['created_at']);
+		if(err!=null){
+			console.log(err);
 		}
 		cb(err, data);
 	});
 };
-
-
 
 
 module.exports.getTimeFilteredTweets = getTimeFilteredTweets;
