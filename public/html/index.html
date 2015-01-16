@@ -5,22 +5,34 @@
 		<link rel="stylesheet" type="text/css" href="./../css/style.css"/>
 	</head>
 	<body>
-		<div>
-			<input type="button" value="Show Overall Sentiment" onclick="readAll()" />
-			<input type="button" value="Show Sentiment Of Most Recent Ten Positive Tweets" onclick="getPositiveTenTweets()" />
-			<input type="button" value="Show Sentiment Of Most Recent Ten Negative Tweets" onclick="getNegativeTenTweets()" />
-		</div>
-		<div>
-			<input type="button" value ="Show Sentiment" onclick="getTimeFilteredTweets()"/>
-			From <input type="date" id="fromDate" />
-			To <input type="date" id="toDate"/>
-		</div>
-		<div class="chart"></div>
 
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-		<script src="http://d3js.org/d3.v3.min.js"></script>
-		<script type="text/javascript" src="./../script/graph.js"></script>
-		<script type="text/javascript" src="./../script/showTweets.js"></script>
+		<div class="container" id="container">
+			<div class="page-header">
+				<h2>Tweets Sentiment Viewer</h2>
+			</div>
+			<div class="row">
+				<input type="button" class="btn btn-success" value="Show Overall Sentiment" onclick="readAll()" />
+				<input type="button" class="btn btn-success" value="Show Sentiment Of Most Recent Ten Positive Tweets" onclick="getPositiveTenTweets()" />
+				<input type="button" class="btn btn-success" value="Show Sentiment Of Most Recent Ten Negative Tweets" onclick="getNegativeTenTweets()" />
+			</div>
+			<div class="row">
+				<input type="button" class="btn btn-warning" value ="Show Sentiment" onclick="getTimeFilteredTweets()"/>
+				From <input type="date" id="fromDate" />
+				To <input type="date" id="toDate"/>
+			</div>
+			<div class="chart"></div>
+
+
+			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+			<script src="http://d3js.org/d3.v3.min.js"></script>
+
+			<script type="text/javascript" src="./../script/graph.js"></script>
+			<script type="text/javascript" src="./../script/showTweets.js"></script>
+		</div>
+
+
 	</body>
 </html>
 
