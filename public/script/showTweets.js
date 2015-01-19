@@ -1,3 +1,6 @@
+
+var webpageURL =  window.location.href;
+
 var httpGet = function(theUrl , params) {
     var xmlHttp = null;
     xmlHttp = new XMLHttpRequest();
@@ -7,17 +10,17 @@ var httpGet = function(theUrl , params) {
 };
 
 var readAll = function() {
-    var obj = httpGet("http://localhost:3000/all",null);
+    var obj = httpGet(webpageURL+"all",null);
 	drawGraph(obj);
 };
 
 var getPositiveTenTweets = function(){
-	var obj = httpGet("http://localhost:3000/mostrecentpositive",null);
+	var obj = httpGet(webpageURL+"mostrecentpositive",null);
 	drawGraph(obj)
 };
 
 var getNegativeTenTweets = function(){
-	var obj = httpGet("http://localhost:3000/mostrecentnegative",null);
+	var obj = httpGet(webpageURL+"mostrecentnegative",null);
 	drawGraph(obj);
 };
 
@@ -33,7 +36,7 @@ var getTimeFilteredTweets = function(){
 		var fromTimestamp = getStandardTime(fromDate);
 		var toTimestamp = getStandardTime(toDate);
 
-		var obj = httpGet("http://localhost:3000/timefilteredtweets","from="+fromTimestamp+"&to="+toTimestamp);
+		var obj = httpGet(webpageURL+"timefilteredtweets","from="+fromTimestamp+"&to="+toTimestamp);
 		drawGraph(obj);
 	}
 };

@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var con = require('./dbconnection/connection.js'); // obtain the connection
 
+app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', function (req, res) {
@@ -38,7 +39,7 @@ app.get('/timefilteredtweets',function(req, res){
 	});
 });
 
-
+/* uncomment these lines to use hard coded values for the server
 var server = app.listen(3000, function () {
 
   var host = server.address().address
@@ -46,3 +47,7 @@ var server = app.listen(3000, function () {
 
   console.log('twitter analyser is  listening at http://%s:%s', host, port);
 })
+*/
+app.listen(app.get('port'), function() {
+  console.log("Node app is running at localhost:" + app.get('port'));
+});
